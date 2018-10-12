@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bitri.service.schooladministration.control.SchoolProfileController">
+
+
+   <top>
+      <VBox style="-fx-background-color: #eceff1;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #006699;">
+               <children>
+                  <Circle fx:id="logo" fill="#eceff1" radius="50.0" stroke="#c3dbeb" strokeType="INSIDE" />
+                  <HBox alignment="TOP_RIGHT" prefHeight="40.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <Label fx:id="profileName" text="Bakgatla Comunity Junior Secondary School" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="region" text="Kweneng District" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <VBox prefHeight="200.0">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" spacing="5.0">
+                                 <children>
+                                    <JFXButton fx:id="refresh" text="Reload" />
+                                    <JFXButton fx:id="editProfile" text="Edit Profile" />
+                                 </children>
+                              </HBox>
+                              <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" spacing="20.0">
+                                 <children>
+                                    <Label text="Established:" textFill="#f5f5f5" />
+                                    <Label fx:id="established" text="1995" textFill="WHITE">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="5.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+
+
+   <center>
+      <VBox spacing="2.0" BorderPane.alignment="CENTER">
+         <children>
+            <Separator prefWidth="200.0" />
+            <GridPane vgap="10.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="131.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="209.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="155.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="160.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                  <RowConstraints maxHeight="2.0" minHeight="2.0" prefHeight="2.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                  <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="35.0" vgrow="ALWAYS" />
+               </rowConstraints>
+               <children>
+                  <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                  <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                  <Label style="-fx-font-weight: bold;" text="EMAIL ADDRESS" textFill="#006699" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label style="-fx-font-weight: bold;" text="TELEPHONE" textFill="#006699" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label style="-fx-font-weight: bold;" text="FAX" textFill="#006699" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label style="-fx-font-weight: bold;" text="WEBSITE" textFill="#006699" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label style="-fx-font-weight: bold;" text="POSTAL ADDRESS" textFill="#006699" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="email" text="info@bakgatla.co.bw" textFill="#2c2b2b" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tel" text="(+267) 3670642" textFill="#2c2b2b" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fax" text="(+267) 36070642" textFill="#2c2b2b" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="website" text="www.bakgatla.co.bw" textFill="#2c2b2b" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="postalAddress" text="P O Box 150 333, Mogodithshane" textFill="#2c2b2b" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="physicalAddress" text="Plot 8136 Block 9" textFill="#2c2b2b" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label style="-fx-font-weight: bold;" text="PHYSICAL ADDRESS" textFill="#006699" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Contacts Information" textFill="#004d66" GridPane.columnSpan="2" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <Separator prefWidth="200.0" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </center>
+
+
+</BorderPane>

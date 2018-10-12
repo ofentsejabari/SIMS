@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="498.0" prefWidth="748.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bitri.service.studentmanagement.control.ExtraCurriculaController">
+   <children>
+      <BorderPane fx:id="borderPane" layoutY="-6.0" prefHeight="498.0" prefWidth="748.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <VBox prefHeight="456.0" prefWidth="294.0" spacing="5.0" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+               </padding>
+               <children>
+                  <HBox spacing="5.0">
+                     <children>
+                        <Label fx:id="activityName" styleClass="title-label" text="Activity" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <JFXButton fx:id="btn_refresh" text="Refresh" />
+                        <JFXButton fx:id="btn_add" text="Add Activitiy" />
+                        <MenuButton fx:id="btn_export" mnemonicParsing="false" text="MenuButton" />
+                     </children>
+                     <styleClass>
+                        <String fx:value="panel-info" />
+                        <String fx:value="panel-heading" />
+                     </styleClass>
+                  </HBox>
+                  <JFXTabPane styleClass="jfx-tab-flatpane">
+                     <tabs>
+                        <Tab fx:id="membersTab" text="Students" />
+                        <Tab fx:id="staffMembers" text="Staff" />
+                     </tabs>
+                  </JFXTabPane>
+               </children>
+            </VBox>
+         </center>
+         <left>
+            <BorderPane style="-fx-padding: 10 5 5 5;" BorderPane.alignment="CENTER">
+               <center>
+                  <BorderPane style="-fx-border-width: 0;" styleClass="panel-info" BorderPane.alignment="CENTER">
+                     <top>
+                        <HBox alignment="CENTER_LEFT" prefHeight="32.0" spacing="5.0" styleClass="panel-heading" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label styleClass="title-label" text="Activities" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Label text="(" />
+                              <Label fx:id="total" text="345" />
+                              <Label text=")" />
+                           </children>
+                        </HBox>
+                     </top>
+                     <center>
+                        <JFXListView fx:id="activity_ListView" styleClass="jfx-custom-list" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+               </center>
+            </BorderPane>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>

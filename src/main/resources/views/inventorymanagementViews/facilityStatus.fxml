@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import org.controlsfx.control.textfield.*?>
+<?import java.net.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="392.0" prefWidth="644.0" style="-fx-background-color: #fff;"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bitri.service.inventorymanagement.control.FacilityStatusController">
+   <children>
+      <StackPane prefHeight="600.0" prefWidth="1061.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox fx:id="background_process" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #00000060;">
+               <children>
+                  <JFXSpinner prefHeight="80.0" prefWidth="1061.0" />
+                  <Label text="Processing ..." textFill="WHITE">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <BorderPane fx:id="container" prefHeight="487.0" prefWidth="982.0" style="-fx-background-color: #fff;">
+               <bottom>
+                  <HBox alignment="CENTER" prefHeight="48.0" prefWidth="1019.0" spacing="10.0" style="-fx-padding: 4;" styleClass="secondary-toolbar" BorderPane.alignment="CENTER" />
+               </bottom>
+               <top>
+                  <HBox prefHeight="40.0" prefWidth="1061.0" styleClass="screen-decoration" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="facilityN" prefHeight="27.0" prefWidth="160.0" styleClass="window-title" text="Facility Status" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <Region prefHeight="40.0" prefWidth="513.0" HBox.hgrow="ALWAYS" />
+                        <JFXButton fx:id="btn_toolbar_close" alignment="TOP_RIGHT" contentDisplay="RIGHT" graphicTextGap="0.0" prefHeight="20.0" prefWidth="23.0" ripplerFill="#1abbd0" style="-fx-background-radius: 0; -fx-border-radius: 0; -fx-cursor: hand;" styleClass="window-close" text="" textFill="#fbfeff" wrapText="true">
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../entry/icons/close.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </top>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

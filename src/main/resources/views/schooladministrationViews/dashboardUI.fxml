@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="dashboard" prefHeight="450.0" prefWidth="737.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bitri.service.schooladministration.control.DashboardController">
+
+   <center>
+      <HBox alignment="CENTER_RIGHT" prefHeight="60.0" spacing="50.0" style="-fx-background-color: #eceff1;" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+         </padding>
+      </HBox>
+   </center>
+   <left>
+      <VBox fx:id="students" prefHeight="450.0" prefWidth="250.0" spacing="20.0" style="-fx-background-color: #eceff1;" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </left>
+</BorderPane>

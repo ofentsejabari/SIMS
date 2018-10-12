@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import org.controlsfx.control.textfield.*?>
+<?import java.net.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="104.0" prefWidth="280.0" style="-fx-background-color: #fff; -fx-border-radius: 20;"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bitri.service.inventorymanagement.control.FailedController">
+   <children>
+      <StackPane prefHeight="600.0" prefWidth="1061.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BorderPane prefHeight="249.0" prefWidth="377.0" style="-fx-background-color: #fff;">
+               <center>
+                  <Pane fx:id="sStack" opacity="0.76" prefHeight="104.0" prefWidth="270.0" style="-fx-border-radius: 5px;" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="88.0" layoutY="30.0" prefHeight="31.0" prefWidth="107.0" text="Unsuccessful!">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <JFXButton fx:id="close" layoutX="5.0" layoutY="69.0" prefHeight="30.0" prefWidth="270.0" style="-fx-background-color: #FAAB0E;" text="ok" textAlignment="CENTER" textFill="#f8f8f8">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></JFXButton>
+                        <Pane layoutX="116.0" layoutY="-21.0" prefHeight="45.0" prefWidth="50.0" style="-fx-background-color: #FAAB0E; -fx-border-radius: 20;">
+                           <children>
+                              <JFXButton fx:id="successImg" layoutX="-3.0" layoutY="-2.0" prefHeight="52.0" prefWidth="55.0" textFill="WHITE" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </center>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

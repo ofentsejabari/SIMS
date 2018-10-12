@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bitri.access.control.MainUIFXMLController">
+   <children>
+      <StackPane fx:id="drawerStackPane" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BorderPane fx:id="parentContainer" prefHeight="400.0" prefWidth="600.0">
+               <top>
+                  <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="1200.0" spacing="10.0" style="-fx-padding: 0 2 0 0;" styleClass="header-box" BorderPane.alignment="CENTER_LEFT">
+                     <children>
+                        <JFXButton fx:id="btn_drawer" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="26.0" prefWidth="20.0" ripplerFill="WHITE" style="-fx-cursor: hand; -fx-background-color: transparent; -fx-border-radius: 0; -fx-background-radius: 0;" text="." textFill="WHITE" wrapText="true">
+                           <padding>
+                              <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                           </padding>
+                        </JFXButton>
+                        <Label styleClass="system-names" text="School Information Management System" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <Region prefHeight="24.0" prefWidth="575.0" HBox.hgrow="ALWAYS" />
+                        <HBox style="-fx-border-color: #ffffff50; -fx-border-width: 0 0 0 1;">
+                           <children>
+                              <JFXButton fx:id="btn_toolbar_help" buttonType="RAISED" graphicTextGap="0.0" prefHeight="24.0" prefWidth="60.0" ripplerFill="#1fc9b8" style="-fx-background-radius: 0; -fx-border-radius: 0; -fx-border-color: #ffffff50; -fx-border-width: 0 1 0 0; -fx-cursor: hand;" textFill="#fbfeff" wrapText="true" />
+                              <JFXButton fx:id="btn_toolbar_about" buttonType="RAISED" prefHeight="24.0" prefWidth="60.0" ripplerFill="#1fc9b8" style="-fx-background-radius: 0; -fx-border-radius: 0; -fx-border-color: #ffffff50; -fx-border-width: 0 1 0 0; -fx-cursor: hand;" textFill="#fbfeff" wrapText="true" />
+                           </children>
+                        </HBox>
+                        <Circle fx:id="profile_picture" fill="#1f93ff00" radius="12.0" stroke="#ffffff1c" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" />
+                        <Label styleClass="user-namee" text="Ofentse Jabari" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <JFXButton fx:id="btn_menu" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="20.0" prefWidth="20.0" ripplerFill="WHITE" style="-fx-cursor: hand; -fx-background-color: #ffffff50; -fx-border-radius: 50%; -fx-background-radius: 50%;" text="." textFill="WHITE" wrapText="true">
+                           <padding>
+                              <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                           </padding>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </top>
+               <bottom>
+                  <HBox fx:id="footer" prefHeight="31.0" spacing="10.0" styleClass="footer-box" BorderPane.alignment="CENTER_RIGHT" />
+               </bottom>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="498.0" prefWidth="748.0" style="-fx-background-color: #fff;"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bitri.service.inventorymanagement.control.SupplierManagementController">
+   <children>
+      <BorderPane fx:id="borderPane" layoutY="-6.0" prefHeight="498.0" prefWidth="748.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="748.0" spacing="5.0" styleClass="primary-toolbar" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton fx:id="btn_add" prefHeight="32.0" ripplerFill="#08a53a" styleClass="jfx-tool-button" text="Add Supplier" textFill="#5d5a5a" />
+                  <JFXButton fx:id="btn_export" prefHeight="32.0" ripplerFill="#08a53a" styleClass="jfx-tool-button" text="Export" textFill="#5d5a5a" />
+                  <Region prefHeight="26.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="8.0" />
+               </padding>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

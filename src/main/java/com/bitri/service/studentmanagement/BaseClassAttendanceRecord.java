@@ -1,0 +1,335 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.bitri.service.studentmanagement;
+
+import com.bitri.access.*;
+import com.bitri.access.ProgressIndicator;
+import com.bitri.resource.dao.AdminQuery;
+import com.bitri.resource.dao.StudentQuery;
+import com.bitri.service.schooladministration.BaseClass;
+import com.bitri.service.schooladministration.Term;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.util.Callback;
+
+import java.util.Optional;
+
+import static com.bitri.access.control.MainUIFXMLController.PARENT_STACK_PANE;
+
+/**
+ *
+ * @author MOILE
+ */
+public class BaseClassAttendanceRecord extends BorderPane{
+
+    CustomTableView<StudentSpecialNeedsModel> studentAttendanceTable;
+    EmployeeSubjectListWorkService termListWork;
+    BaseClass base_class; 
+    public static ObservableList<Term> termNames = FXCollections.observableArrayList();
+    public static ObservableList<StudentSpecialNeedsModel> termList = FXCollections.observableArrayList();
+    public String selectedNeed;
+    JFXComboBox<String> combo;
+    
+    
+    public BaseClassAttendanceRecord(BaseClass base_class) {
+        
+        this.base_class=base_class;
+        
+        termListWork = new EmployeeSubjectListWorkService();
+        
+        setPadding(new Insets(10,5,5,5));
+        StackPane root = new StackPane();
+        BorderPane content = new BorderPane();
+        root.getChildren().add(content);
+        
+        //----------------------------------------
+        HBox toolbar = new HBox(5);
+        toolbar.getStyleClass().add("primary-toolbar");
+        
+        JFXButton refresh = new JFXButton("Refresh");
+        refresh.getStyleClass().addAll("btn-xs", "btn-default");
+        refresh.setGraphic(SIMS.getGraphics(MaterialDesignIcon.LED_VARIANT_ON,"blue-gray", 18));
+        refresh.setOnAction((ActionEvent event) -> {
+            termListWork.restart();
+        });
+        
+        JFXButton add = new JFXButton("Add");
+        add.getStyleClass().addAll("btn-xs","btn-success");
+        add.setGraphic(SIMS.getGraphics(MaterialDesignIcon.LED_VARIANT_ON, "text-white", 18));
+        add.setOnAction((ActionEvent event) -> {
+            new UpdateBaseClassRegister(base_class);
+        });
+        
+         MenuItem pdf = new MenuItem("Portable Document Format", SIMS.getIcon("pdf.png", 24));
+        MenuItem excel = new MenuItem("Spread Sheet", SIMS.getIcon("excel.png", 24));
+        MenuItem text = new MenuItem("Plain Text", SIMS.getIcon("text.png", 24));
+        
+        MenuButton export = new MenuButton("Export", SIMS.getGraphics(MaterialDesignIcon.LED_VARIANT_ON, "text-white", 18), pdf, excel, text);
+        export.getStyleClass().addAll("split-menu-btn", "split-menu-btn-xs", "split-menu-btn-primary");
+        
+        termNames = AdminQuery.getTermList();
+        ObservableList<String> terms= FXCollections.observableArrayList();
+        
+        for(Term str: termNames){
+            terms.add(str.getDescription()+" "+str.getYear());
+        }
+       
+        
+        combo = new JFXComboBox();
+        combo.setItems(terms);
+        combo.setPrefWidth(210);
+        combo.setPromptText("Select term");
+        
+        
+        combo.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            selectedNeed = newValue;
+            termListWork.restart();
+        });
+        
+        toolbar.getChildren().addAll(combo,new HSpacer(),refresh,export,add);
+        content.setTop(toolbar);
+        
+        //---------------------------------------------------------------------------------
+        studentAttendanceTable = new CustomTableView<>();
+        
+        CustomTableColumn studentName = new CustomTableColumn("STUDENT NAME");
+        studentName.setPercentWidth(30);
+        studentName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
+        studentName.setCellFactory(new Callback<TableColumn<String, String>, TableCell<String, String>>() {
+            @Override 
+            public TableCell<String, String> call(TableColumn<String, String> clientID) {
+                return new TableCell<String, String>() {
+                    
+                    @Override 
+                    public void updateItem(final String ID, boolean empty) {
+                        super.updateItem(ID, empty);
+                        if(!empty){
+                            
+                            setGraphic(new Label(ID));
+                        }else{ setGraphic(null); }
+                        
+                    }
+                };
+            }
+        });
+        
+        CustomTableColumn gender = new CustomTableColumn("CURRENT TERM");
+        gender.setPercentWidth(25);
+        gender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        gender.setCellFactory(new Callback<TableColumn<String, String>, TableCell<String, String>>() {
+            @Override 
+            public TableCell<String, String> call(TableColumn<String, String> clientID) {
+                return new TableCell<String, String>() {
+                    
+                    @Override 
+                    public void updateItem(final String ID, boolean empty) {
+                        super.updateItem(ID, empty);
+                        if(!empty){
+                            
+                            setGraphic(new Label(ID));
+                        }else{ setGraphic(null); }
+                        
+                    }
+                };
+            }
+        });
+        
+        CustomTableColumn specialNeed = new CustomTableColumn("DAYS ATTENDED");
+        specialNeed.setPercentWidth(25);
+        specialNeed.setCellValueFactory(new PropertyValueFactory<>("description"));
+        specialNeed.setCellFactory(new Callback<TableColumn<String, String>, TableCell<String, String>>() {
+            @Override 
+            public TableCell<String, String> call(TableColumn<String, String> clientID) {
+                return new TableCell<String, String>() {
+                    
+                    @Override 
+                    public void updateItem(final String ID, boolean empty) {
+                        super.updateItem(ID, empty);
+                        if(!empty){
+                            setGraphic(new Label(ID));
+                        }else{ setGraphic(null); }
+                        
+                    }
+                };
+            }
+        });
+        
+        CustomTableColumn solution = new CustomTableColumn("TERM DAYS");
+        solution.setPercentWidth(25);
+        solution.setCellValueFactory(new PropertyValueFactory<>("solution"));
+        solution.setCellFactory(new Callback<TableColumn<String, String>, TableCell<String, String>>() {
+            @Override 
+            public TableCell<String, String> call(TableColumn<String, String> clientID) {
+                return new TableCell<String, String>() {
+                    
+                    @Override 
+                    public void updateItem(final String ID, boolean empty) {
+                        super.updateItem(ID, empty);
+                        if(!empty){
+                            setGraphic(new Label(ID));
+                        }else{ setGraphic(null); }
+                        
+                    }
+                };
+            }
+        });
+        
+        CustomTableColumn controls = new CustomTableColumn("");
+        controls.setPercentWidth(14.5);
+        controls.setCellValueFactory(new PropertyValueFactory<>("id"));
+        controls.setCellFactory(new Callback<TableColumn<String, String>, TableCell<String, String>>() {
+            @Override 
+            public TableCell<String, String> call(TableColumn<String, String> clientID) {
+                return new TableCell<String, String>() {
+                    
+                    @Override 
+                    public void updateItem(final String ID, boolean empty) {
+                        super.updateItem(ID, empty);
+                        if(!empty){
+                            
+                            HBox actions = new HBox(10);
+                            actions.setStyle("-fx-padding:0");
+                            
+                            JFXButton edit = new JFXButton();
+                            edit.setGraphic(SIMS.getGraphics(MaterialDesignIcon.LED_VARIANT_ON,"text-bluegray", 16));
+                            edit.setTooltip(new Tooltip("Edit Employee Profile"));
+                            edit.getStyleClass().addAll("btn-xs", "btn-default");
+                            edit.setOnAction((ActionEvent event) -> {
+                                
+                            });
+                            
+                            JFXButton del = new JFXButton();
+                            del.setGraphic(SIMS.getGraphics(MaterialDesignIcon.LED_VARIANT_ON, "text-white", 16));
+                            del.setTooltip(new Tooltip("Edit Student Social Welfare"));
+                            del.getStyleClass().addAll("btn-danger", "btn-xs");
+                            del.setOnAction((ActionEvent event) -> {
+                                
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.setTitle("Confirmation Dialog");
+                                alert.setHeaderText(null);
+                                alert.setContentText("Are you sure you want to remove special need");
+                                Optional <ButtonType> action= alert.showAndWait();
+
+                                if(action.get()==ButtonType.OK){
+                                    
+                                    StudentSpecialNeedsModel sswm= StudentQuery.getSpecialNeedStudentBySSNID(ID);
+                                    SpecialNeed sn = StudentQuery.getSpecialNeedByID(sswm.getSn_id());
+                                    Student student = SIMS.dbHandler.getStudentByID(sswm.getStudentID());
+                                    
+                                    if(StudentQuery.deleteStudentSpecialNeed(student,sn))
+                                    {
+                                        new DialogUI("Special need successfully updated",DialogUI.SUCCESS_NOTIF, PARENT_STACK_PANE, null).show();
+                                        termListWork.restart();
+                                    }
+                                    else{
+                                            new DialogUI("Exception occurred while trying to remove student from the class.",
+                                                        DialogUI.ERROR_NOTIF, PARENT_STACK_PANE, null).show();
+                                        }
+                                }    
+                            });
+                            
+                            actions.getChildren().addAll(edit,del);
+                            
+                            setGraphic(actions);
+                            
+                        }else{ setGraphic(null); }
+                        
+                    }
+                };
+            }
+        });
+        
+        studentAttendanceTable.getTableView().getColumns().addAll(studentName,gender,specialNeed,solution,controls);
+        
+        VBox ph = SIMS.setDataNotAvailablePlaceholder();
+        studentAttendanceTable.getTableView().setPlaceholder(ph);
+        
+        ProgressIndicator pi = new ProgressIndicator("Loading Employee Data", "If network connection is very slow,"
+                                           + " this might take some few more seconds.");
+        
+        pi.visibleProperty().bind(termListWork.runningProperty());
+        studentAttendanceTable.getTableView().itemsProperty().bind(termListWork.valueProperty());
+        
+        studentAttendanceTable.getTableView().setPlaceholder(SIMS.setDataNotAvailablePlaceholder(termListWork));
+        
+        //------------------------------------------------------
+        
+        content.setCenter(studentAttendanceTable);
+        
+        //--------------------
+        setCenter(root);
+        
+        termListWork.start();
+        termListWork.restart();
+        
+        
+    }
+    
+     public class SpecialNeedListWork extends Task<ObservableList<StudentSpecialNeedsModel>> {       
+        @Override 
+        protected ObservableList<StudentSpecialNeedsModel> call() throws Exception {
+            
+           SpecialNeed sneed = SIMS.dbHandler.getSpecialNeedByName(selectedNeed.trim());
+           termList  = StudentQuery.getSelectedNeedStudents(base_class.getClassID(),sneed.getId());
+           for(StudentSpecialNeedsModel n : termList)
+           {
+               n.setReference(n);
+               
+           }
+           
+           return termList;
+        } 
+    }
+
+    
+    public class EmployeeSubjectListWorkService extends Service<ObservableList<StudentSpecialNeedsModel>> {
+
+        @Override
+        protected Task createTask() {
+            return new SpecialNeedListWork();
+        }
+    }
+    
+    
+//    private void refresh(){
+//        
+//        ObservableList<String> data = AdminQuery.getTermNameList();
+//        if(!data.isEmpty()){
+//           ObservableList<String> current = AdminQuery.getTermNameList();
+//            if(!data.isEmpty()){
+//                
+//                for(String st: data){
+//                    if(!current.contains(st)){
+//                        batch.setItems(data);
+//                        batch.setValue(selectedBatch.getDescription());
+//                        break;
+//                    }
+//                }
+//            }else{
+//                batch.setItems(data);
+//                batch.setValue(batch.getItems().get(0));
+//                classList.getSelectionModel().select(selectedIndex);
+//            }
+//        }
+//    }
+    
+    
+    
+}
