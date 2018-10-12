@@ -31,8 +31,10 @@ import java.time.LocalDate;
 import java.util.Date;
 
 /**
- * Application launcher for SIMS
- * @author ofentse
+ * ********************************************************** *
+ * Application launcher for SIMS                              *
+ * @author ofentse                                            *
+ * ********************************************************** *
  */
 public class SIMS extends Application {
 
